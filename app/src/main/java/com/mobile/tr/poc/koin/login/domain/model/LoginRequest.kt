@@ -1,4 +1,4 @@
-package com.mobile.tr.poc.koin
+package com.mobile.tr.poc.koin.login.domain.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

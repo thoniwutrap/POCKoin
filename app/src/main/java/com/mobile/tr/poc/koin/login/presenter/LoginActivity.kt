@@ -3,25 +3,28 @@ package com.mobile.tr.poc.koin.login.presenter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.mobile.tr.poc.koin.LoginAPI
-import com.mobile.tr.poc.koin.LoginRequest
+import androidx.databinding.DataBindingUtil
 import com.mobile.tr.poc.koin.R
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
+import com.mobile.tr.poc.koin.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class LoginActivity : AppCompatActivity(), LoginContract.View  {
 
+
+    private val viewModel : LoginViewModel by viewModel()
     private val presenter: LoginContract.Presenter by inject { parametersOf(this) }
- // private val repo: LoginAPI by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        var binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
+        binding.loginViewModel = viewModel
+
+
         btnLogin.setOnClickListener {
+            Log.e("ff",viewModel.mobileNo)
             presenter.login()
         }
     }

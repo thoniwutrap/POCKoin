@@ -1,9 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 ext {
     koin_version = '2.0.1'
     retrofit = "2.6.0"
@@ -11,6 +9,7 @@ ext {
     rxjava = '2.2.0'
     rxkotlin = '2.3.0'
     rxandroid = '2.1.0'
+    lifecycle = "2.0.0"
 }
 
 android {
@@ -32,6 +31,15 @@ android {
     }
     androidExtensions {
         experimental = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    dataBinding {
+        enabled = true
+    }
+    kapt {
+        generateStubs = true
     }
 }
 
@@ -55,6 +63,7 @@ dependencies {
     implementation "org.koin:koin-androidx-scope:$koin_version"
     // Koin AndroidX ViewModel features
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
     // Koin AndroidX Experimental features
     implementation "org.koin:koin-androidx-ext:$koin_version"
 
@@ -74,4 +83,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
 
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 }
