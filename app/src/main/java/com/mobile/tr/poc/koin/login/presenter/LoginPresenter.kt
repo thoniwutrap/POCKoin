@@ -6,11 +6,13 @@ import com.mobile.tr.poc.koin.login.domain.LoginUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import org.koin.android.ext.android.get
+import org.koin.core.KoinComponent
 
 class LoginPresenter (
     private var view: LoginContract.View?,
-    private val loginUseCase: LoginUseCase,
-    private val viewModel: LoginViewModel
+    private var loginUseCase: LoginUseCase,
+    private var viewModel : LoginViewModel
 ) : LoginContract.Presenter {
 
 

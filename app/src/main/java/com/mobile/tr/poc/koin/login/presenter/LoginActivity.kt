@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
 
 
     private val viewModel : LoginViewModel by viewModel()
-    private val presenter: LoginContract.Presenter by inject { parametersOf(this) }
+    private val presenter: LoginContract.Presenter by inject { parametersOf(this,viewModel) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
