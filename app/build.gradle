@@ -23,12 +23,76 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            minifyEnabled false
+            splits.abi.enable = false
+            splits.density.enable = false
+            aaptOptions.cruncherEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
     }
+
+    flavorDimensions "api", "mode"
+
+    productFlavors{
+        demo {
+            dimension "mode"
+
+        }
+        full {
+            dimension "mode"
+        }
+
+        minApi24 {
+            dimension "api"
+            minSdkVersion 24
+            versionCode 30000 + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi24"
+        }
+
+        minApi21 {
+            dimension "api"
+            minSdkVersion 21
+            versionCode 10000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi21"
+
+        }
+        minApi23 {
+            dimension "api"
+            minSdkVersion 23
+            versionCode 20000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi23"
+        }
+
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        // To check for a certain build type, use variant.buildType.name == "<buildType>"
+        if (names.contains("minApi21") && names.contains("demo")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+    }
+
     androidExtensions {
         experimental = true
     }
