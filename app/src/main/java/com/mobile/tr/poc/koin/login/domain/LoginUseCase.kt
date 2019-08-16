@@ -9,12 +9,12 @@ import okhttp3.ResponseBody
 
 
 interface LoginUseCase {
-    fun execute(request: LoginRequest): Observable<LoginResponse>
+    fun login(request: LoginRequest): Observable<LoginResponse>
 }
 
 class LoginUseCaseImpl(private val remoteSource: LoginDataSource) : LoginUseCase {
 
-    override fun execute(request: LoginRequest): Observable<LoginResponse> {
+    override fun login(request: LoginRequest): Observable<LoginResponse> {
         return remoteSource.login(request.mobileNo,request.password)
     }
 }

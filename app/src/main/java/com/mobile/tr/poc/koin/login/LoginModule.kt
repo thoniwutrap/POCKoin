@@ -7,6 +7,7 @@ import com.mobile.tr.poc.koin.login.presenter.LoginActivity
 import com.mobile.tr.poc.koin.login.presenter.LoginContract
 import com.mobile.tr.poc.koin.login.presenter.LoginPresenter
 import com.mobile.tr.poc.koin.login.presenter.LoginViewModel
+import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -18,6 +19,7 @@ val feedModule = module {
 
     single <LoginUseCase> { LoginUseCaseImpl(get()) }
 
-    single <LoginContract.Presenter> { (view: LoginContract.View,viewModel : LoginViewModel) -> LoginPresenter(view, get(),viewModel)}
+    single <LoginContract.Presenter> { (view: LoginContract.View,viewModel : LoginViewModel) -> LoginPresenter(view, get(),viewModel,get())}
+
 
 }

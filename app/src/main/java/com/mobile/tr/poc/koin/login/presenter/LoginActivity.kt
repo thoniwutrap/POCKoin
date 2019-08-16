@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.mobile.tr.poc.koin.R
 import com.mobile.tr.poc.koin.databinding.ActivityLoginBinding
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,7 +25,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
 
 
         btnLogin.setOnClickListener {
-            Log.e("ff",viewModel.mobileNo)
             presenter.login()
         }
     }

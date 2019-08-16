@@ -1,8 +1,10 @@
 package com.mobile.tr.poc.koin.di
 
+import androidx.lifecycle.LifecycleObserver
 import com.mobile.tr.poc.koin.BuildConfig
 import com.mobile.tr.poc.koin.login.datasource.network.LoginAPI
 import com.mobile.tr.poc.koin.network.HeaderInterceptor
+import io.reactivex.disposables.CompositeDisposable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -18,7 +20,6 @@ val networkModule = module {
     single { provideRetrofit<LoginAPI>(get())}
 
 }
-
 
 fun provideOkhttpClient(): OkHttpClient {
     val logger = HttpLoggingInterceptor().apply {

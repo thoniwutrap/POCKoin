@@ -1,6 +1,7 @@
 package com.mobile.tr.poc.koin
 
 import android.app.Application
+import com.mobile.tr.poc.koin.di.appModule
 import com.mobile.tr.poc.koin.login.feedModule
 import com.mobile.tr.poc.koin.di.networkModule
 import com.mobile.tr.poc.koin.login.datasource.network.loginModule
@@ -15,7 +16,7 @@ class MyApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(listOf(networkModule, feedModule,loginModule))
+            modules(listOf(appModule,networkModule, feedModule,loginModule))
         }
     }
 }
