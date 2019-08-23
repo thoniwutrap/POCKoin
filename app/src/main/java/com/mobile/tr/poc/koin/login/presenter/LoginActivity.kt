@@ -27,5 +27,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
         btnLogin.setOnClickListener {
             presenter.login()
         }
+
+        btnUser.setOnClickListener {
+            presenter.getUser()
+        }
     }
 }

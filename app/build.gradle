@@ -50,49 +50,6 @@ android {
         }
     }
 
-    flavorDimensions "api", "mode"
-
-    productFlavors{
-        demo {
-            dimension "mode"
-
-        }
-        full {
-            dimension "mode"
-        }
-
-        minApi24 {
-            dimension "api"
-            minSdkVersion 24
-            versionCode 30000 + android.defaultConfig.versionCode
-            versionNameSuffix "-minApi24"
-        }
-
-        minApi21 {
-            dimension "api"
-            minSdkVersion 21
-            versionCode 10000  + android.defaultConfig.versionCode
-            versionNameSuffix "-minApi21"
-
-        }
-        minApi23 {
-            dimension "api"
-            minSdkVersion 23
-            versionCode 20000  + android.defaultConfig.versionCode
-            versionNameSuffix "-minApi23"
-        }
-
-    }
-
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        // To check for a certain build type, use variant.buildType.name == "<buildType>"
-        if (names.contains("minApi21") && names.contains("demo")) {
-            // Gradle ignores any variants that satisfy the conditions above.
-            setIgnore(true)
-        }
-    }
-
     androidExtensions {
         experimental = true
     }
@@ -149,4 +106,7 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
+
+    implementation "androidx.room:room-runtime:2.1.0"
+    kapt "androidx.room:room-compiler:2.1.0"
 }

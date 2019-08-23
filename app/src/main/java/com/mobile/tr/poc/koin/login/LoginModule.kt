@@ -19,7 +19,7 @@ val feedModule = module {
 
     single <LoginUseCase> { LoginUseCaseImpl(get()) }
 
-    single <LoginContract.Presenter> { (view: LoginContract.View,viewModel : LoginViewModel) -> LoginPresenter(view, get(),viewModel,get())}
+    single <LoginContract.Presenter> { (view: LoginContract.View,viewModel : LoginViewModel) -> LoginPresenter(view, get(),get(),viewModel,get())}
 
 
 }
