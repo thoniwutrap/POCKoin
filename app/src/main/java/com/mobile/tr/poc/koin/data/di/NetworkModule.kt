@@ -3,6 +3,7 @@ package com.mobile.tr.poc.koin.data.di
 import com.mobile.tr.poc.koin.BuildConfig
 import com.mobile.tr.poc.koin.login.datasource.network.LoginAPI
 import com.mobile.tr.poc.koin.network.HeaderInterceptor
+import com.mobile.tr.poc.koin.test.PostApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -16,6 +17,7 @@ val networkModule = module {
 
     single{ provideOkhttpClient() }
     single { provideRetrofit<LoginAPI>(get())}
+    single { provideRetrofit<PostApi>(get())}
 
 }
 
@@ -41,9 +43,11 @@ fun provideOkhttpClient(): OkHttpClient {
 inline fun <reified T> provideRetrofit(client: OkHttpClient): T {
     return Retrofit.Builder()
         .client(client)
-        .baseUrl("https://crm.th.kerryexpress.com/keapp-api/api/")
+       // .baseUrl("https://crm.th.kerryexpress.com/keapp-api/api/")
+        .baseUrl("https://api.github.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(T::class.java)
 }
+

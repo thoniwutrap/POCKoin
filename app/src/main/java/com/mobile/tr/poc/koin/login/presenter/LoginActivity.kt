@@ -1,11 +1,13 @@
 package com.mobile.tr.poc.koin.login.presenter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.mobile.tr.poc.koin.R
 import com.mobile.tr.poc.koin.databinding.ActivityLoginBinding
+import com.mobile.tr.poc.koin.test.TestActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
@@ -29,7 +31,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
         }
 
         btnUser.setOnClickListener {
-            presenter.getUser()
+            //presenter.getUser()
+            Intent(this,TestActivity::class.java).apply {
+                startActivity(this)
+            }
         }
+
+        presenter.login()
+        presenter.login()
     }
 }
