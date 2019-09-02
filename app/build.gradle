@@ -10,6 +10,7 @@ ext {
     rxkotlin = '2.3.0'
     rxandroid = '2.1.0'
     lifecycle = "2.0.0"
+    multidex_version = "2.0.1"
 }
 
 android {
@@ -22,6 +23,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -62,6 +64,18 @@ android {
     kapt {
         generateStubs = true
     }
+
+    sourceSets {
+        test {
+            resources.srcDirs += ['src/test/resources']
+        }
+        androidTest {
+            resources.srcDirs += ['src/androidTest/resources']
+        }
+    }
+    testOptions {
+        unitTests.includeAndroidResources true
+    }
 }
 
 dependencies {
@@ -78,6 +92,8 @@ dependencies {
     //For Unit tests:
     testImplementation 'androidx.test.ext:junit:1.1.1'
     testImplementation "org.mockito:mockito-core:2.21.0"
+    testImplementation 'androidx.test:core:1.2.0'
+
     androidTestImplementation 'androidx.test:runner:1.2.0'
     //For UI tests:
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
@@ -85,9 +101,8 @@ dependencies {
 
     // Koin for Kotlin
     implementation "org.koin:koin-core:$koin_version"
-
     implementation "org.koin:koin-android:$koin_version"
-
+    testImplementation 'org.koin:koin-test:2.0.1'
 
     // Koin AndroidX Scope features
     implementation "org.koin:koin-androidx-scope:$koin_version"
@@ -125,4 +140,6 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+
+    implementation "androidx.multidex:multidex:$multidex_version"
 }

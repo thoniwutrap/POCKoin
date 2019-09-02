@@ -77,7 +77,7 @@ data class UsersResponse(
 	val followers: Int? = null,
 
 	@field:SerializedName("avatar_url")
-	val avatarUrl: String? = null,
+	var avatarUrl: String? = null,
 
 	@field:SerializedName("events_url")
 	val eventsUrl: String? = null,
@@ -89,7 +89,7 @@ data class UsersResponse(
 	val following: Int? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	var name: String? = null,
 
 	@field:SerializedName("location")
 	val location: Any? = null,
