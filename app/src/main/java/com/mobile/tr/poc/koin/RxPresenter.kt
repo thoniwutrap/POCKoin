@@ -9,9 +9,13 @@ import io.reactivex.disposables.CompositeDisposable
 open class RxPresenter (val compositeDisposable: CompositeDisposable) :
 	LifecycleObserver {
 
+	@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+	fun onStop() {
+		compositeDisposable.clear()
+	}
+
 	@OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
 	fun onDestroy() {
-		Log.e("ffff","destory")
 		compositeDisposable.dispose()
 	}
 }

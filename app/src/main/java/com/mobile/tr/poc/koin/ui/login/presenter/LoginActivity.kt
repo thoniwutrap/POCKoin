@@ -1,14 +1,12 @@
-package com.mobile.tr.poc.koin.login.presenter
+package com.mobile.tr.poc.koin.ui.login.presenter
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.mobile.tr.poc.koin.R
 import com.mobile.tr.poc.koin.databinding.ActivityLoginBinding
-import com.mobile.tr.poc.koin.test.TestActivity
-import io.reactivex.disposables.CompositeDisposable
+import com.mobile.tr.poc.koin.vm.VMActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,7 +20,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
+        val binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this,R.layout.activity_login)
         binding.loginViewModel = viewModel
 
 
@@ -32,7 +30,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
 
         btnUser.setOnClickListener {
             //presenter.getUser()
-            Intent(this,TestActivity::class.java).apply {
+            Intent(this,VMActivity::class.java).apply {
                 startActivity(this)
             }
         }

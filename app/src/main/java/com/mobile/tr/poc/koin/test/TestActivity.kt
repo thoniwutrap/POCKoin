@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.tr.poc.koin.R
-import com.mobile.tr.poc.koin.data.local.entity.User
-import com.mobile.tr.poc.koin.login.domain.model.LoginRequest
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.coroutines.*
 import org.koin.android.ext.android.inject

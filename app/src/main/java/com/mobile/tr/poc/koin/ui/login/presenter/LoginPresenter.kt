@@ -1,10 +1,10 @@
-package com.mobile.tr.poc.koin.login.presenter
+package com.mobile.tr.poc.koin.ui.login.presenter
 
 import android.util.Log
 import com.mobile.tr.poc.koin.RxPresenter
 import com.mobile.tr.poc.koin.data.local.query.UserDao
-import com.mobile.tr.poc.koin.login.domain.model.LoginRequest
-import com.mobile.tr.poc.koin.login.domain.LoginUseCase
+import com.mobile.tr.poc.koin.ui.login.domain.model.LoginRequest
+import com.mobile.tr.poc.koin.ui.login.domain.LoginUseCase
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

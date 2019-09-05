@@ -1,9 +1,10 @@
 package com.mobile.tr.poc.koin.data.di
 
 import com.mobile.tr.poc.koin.BuildConfig
-import com.mobile.tr.poc.koin.login.datasource.network.LoginAPI
+import com.mobile.tr.poc.koin.ui.login.datasource.network.LoginAPI
 import com.mobile.tr.poc.koin.network.HeaderInterceptor
 import com.mobile.tr.poc.koin.test.PostApi
+import com.mobile.tr.poc.koin.ui.github.datasource.network.NewsAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -13,15 +14,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-val networkModule = module {
+const val NEWS_URL = "https://newsapi.org/v2/"
 
+val networkModule = module{
     single{ provideOkhttpClient() }
-    single { provideRetrofit<LoginAPI>(get())}
-    single { provideRetrofit<PostApi>(get())}
-
+    single { provideRetrofit<LoginAPI>(get(),"https://api.github.com/")}
+    single { provideRetrofit<PostApi>(get(),"https://api.github.com/")}
+    single { provideRetrofit<NewsAPI>(get(),NEWS_URL)}
 }
 
+
 fun provideOkhttpClient(): OkHttpClient {
+
     val logger = HttpLoggingInterceptor().apply {
         level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
     }
@@ -40,11 +44,10 @@ fun provideOkhttpClient(): OkHttpClient {
 }
 
 
-inline fun <reified T> provideRetrofit(client: OkHttpClient): T {
+inline fun <reified T> provideRetrofit(client: OkHttpClient,baseURL : String): T {
     return Retrofit.Builder()
         .client(client)
-       // .baseUrl("https://crm.th.kerryexpress.com/keapp-api/api/")
-        .baseUrl("https://api.github.com/")
+        .baseUrl(baseURL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()

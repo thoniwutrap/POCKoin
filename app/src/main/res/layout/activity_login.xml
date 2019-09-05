@@ -6,14 +6,14 @@
     <data>
         <variable
             name="loginViewModel"
-            type="com.mobile.tr.poc.koin.login.presenter.LoginViewModel" />
+            type="com.mobile.tr.poc.koin.ui.login.presenter.LoginViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.presenter.LoginActivity">
+        tools:context=".ui.login.presenter.LoginActivity">
 
 
         <EditText

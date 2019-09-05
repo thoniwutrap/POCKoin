@@ -1,4 +1,4 @@
-package com.mobile.tr.poc.koin.login.presenter
+package com.mobile.tr.poc.koin.ui.login.presenter
 
 import androidx.lifecycle.LifecycleObserver
 

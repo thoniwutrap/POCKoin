@@ -1,8 +1,8 @@
-package com.mobile.tr.poc.koin.login.datasource.network
+package com.mobile.tr.poc.koin.ui.login.datasource.network
 
 import com.mobile.tr.poc.koin.data.local.entity.User
-import com.mobile.tr.poc.koin.login.datasource.LoginDataSource
-import com.mobile.tr.poc.koin.login.domain.model.LoginRequest
+import com.mobile.tr.poc.koin.ui.login.datasource.LoginDataSource
+import com.mobile.tr.poc.koin.ui.login.domain.model.LoginRequest
 import io.reactivex.Observable
 
 class LoginDataSourceNetwork (val api : LoginAPI) : LoginDataSource {

@@ -1,10 +1,9 @@
-package com.mobile.tr.poc.koin.login.domain
+package com.mobile.tr.poc.koin.ui.login.domain
 
 import com.mobile.tr.poc.koin.data.local.entity.User
-import com.mobile.tr.poc.koin.login.datasource.LoginDataSource
-import com.mobile.tr.poc.koin.login.domain.model.LoginRequest
+import com.mobile.tr.poc.koin.ui.login.datasource.LoginDataSource
+import com.mobile.tr.poc.koin.ui.login.domain.model.LoginRequest
 import io.reactivex.Observable
-import okhttp3.ResponseBody
 
 
 interface LoginUseCase {
