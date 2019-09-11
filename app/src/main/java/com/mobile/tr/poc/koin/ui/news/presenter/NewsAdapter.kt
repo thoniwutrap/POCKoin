@@ -13,7 +13,7 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     private var mNewsList : MutableList<ArticlesItem> = mutableListOf()
 
 
-    fun setAppList(categoryModel: MutableList<ArticlesItem>) {
+    fun updateNews(categoryModel: MutableList<ArticlesItem>) {
         mNewsList = categoryModel
         notifyDataSetChanged()
     }
@@ -26,18 +26,17 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     override fun getItemCount(): Int  {
-        Log.e("sizxxe",mNewsList.size.toString())
         return mNewsList.size
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val appInfo = mNewsList[position]
-        (holder as NewsAdapter.RecyclerHolderCatIcon).bind(appInfo)
+        (holder as RecyclerHolderCatIcon).bind(appInfo)
     }
 
-    inner class RecyclerHolderCatIcon(private var applicationBinding: NewsListItemBinding) : RecyclerView.ViewHolder(applicationBinding.root) {
+    inner class RecyclerHolderCatIcon(private var newsBinding: NewsListItemBinding) : RecyclerView.ViewHolder(newsBinding.root) {
 
         fun bind(appInfo: ArticlesItem) {
-            applicationBinding.newsViewModel  = appInfo
+            newsBinding.newsViewModel  = appInfo
         }
     }
 

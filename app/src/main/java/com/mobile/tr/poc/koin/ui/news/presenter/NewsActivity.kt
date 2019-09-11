@@ -29,32 +29,28 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("ff","create")
+
         binding = DataBindingUtil.setContentView<ActivityGithubBinding>(this, R.layout.activity_github)
             .apply {
                 newsViewModel = viewModel
                 lifecycleOwner = this@NewsActivity
             }
-        subscribeViewModel()
-        rvNews?.initVertical()  
-        adapter = NewsAdapter()
-        rvNews?.adapter = adapter
-
-        showLoading()
-        presenter.getGithub()
-
-
+        setupView()
+        showLoading().let {
+            presenter.getGithub()
+        }
     }
 
-
-
-
+    fun setupView(){
+        subscribeViewModel()
+        rvNews?.initVertical()
+        adapter = NewsAdapter()
+        rvNews?.adapter = adapter
+    }
 
     fun subscribeViewModel(){
-        viewModel.mutablePostList.removeObservers(this)
         viewModel.mutablePostList.observe(this, Observer<MutableList<ArticlesItem>> {
-            Log.e("d","subscrive ${it.size}")
-            adapter?.setAppList(it)
+            adapter?.updateNews(it)
         })
     }
 
@@ -62,15 +58,12 @@ class NewsActivity : BaseActivity(), NewsContract.View {
         hideLoading()
     }
 
-
     fun getUser(view: View) {
         presenter.getNews()
     }
 
-
     override fun onDestroy() {
-        Log.e("destroy","true")
-        viewModel.mutablePostList.value = null
         super.onDestroy()
+        viewModel.mutablePostList.removeObservers(this)
     }
 }
