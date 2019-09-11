@@ -6,14 +6,14 @@
     <data>
         <variable
                 name="newsViewModel"
-                type="com.mobile.tr.poc.koin.ui.github.presenter.NewsViewModel" />
+                type="com.mobile.tr.poc.koin.ui.news.presenter.NewsViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.github.presenter.NewsActivity">
+            tools:context=".ui.news.presenter.NewsActivity">
 
 
         <TextView

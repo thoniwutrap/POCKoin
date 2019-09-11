@@ -1,4 +1,4 @@
-package com.mobile.tr.poc.koin.ui.github.domain.model
+package com.mobile.tr.poc.koin.ui.news.domain.model
 
 import com.google.gson.annotations.SerializedName
 

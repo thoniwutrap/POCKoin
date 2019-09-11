@@ -34,8 +34,5 @@ class LoginActivity : AppCompatActivity(), LoginContract.View  {
                 startActivity(this)
             }
         }
-
-        presenter.login()
-        presenter.login()
     }
 }

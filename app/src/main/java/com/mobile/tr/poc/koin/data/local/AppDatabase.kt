@@ -7,7 +7,7 @@ import com.mobile.tr.poc.koin.data.local.entity.news.TbNews
 import com.mobile.tr.poc.koin.data.local.entity.User
 import com.mobile.tr.poc.koin.data.local.entity.news.NewsTypeConverters
 import com.mobile.tr.poc.koin.data.local.query.UserDao
-import com.mobile.tr.poc.koin.ui.github.datasource.local.NewsDao
+import com.mobile.tr.poc.koin.ui.news.datasource.local.NewsDao
 
 
 @Database(

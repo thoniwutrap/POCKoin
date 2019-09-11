@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.mobile.tr.poc.koin.data.local.AppDatabase
 import com.mobile.tr.poc.koin.data.local.query.UserDao
-import com.mobile.tr.poc.koin.ui.github.datasource.local.NewsDao
+import com.mobile.tr.poc.koin.ui.news.datasource.local.NewsDao
 import org.koin.dsl.module
 
 const val DATABASE_FILE_NAME = "teerap"

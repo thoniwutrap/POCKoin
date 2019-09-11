@@ -4,7 +4,7 @@ import com.mobile.tr.poc.koin.BuildConfig
 import com.mobile.tr.poc.koin.ui.login.datasource.network.LoginAPI
 import com.mobile.tr.poc.koin.network.HeaderInterceptor
 import com.mobile.tr.poc.koin.test.PostApi
-import com.mobile.tr.poc.koin.ui.github.datasource.network.NewsAPI
+import com.mobile.tr.poc.koin.ui.news.datasource.network.NewsAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

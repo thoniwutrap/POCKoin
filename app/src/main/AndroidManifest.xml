@@ -12,7 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.github.presenter.NewsActivity"></activity>
+        <activity android:name=".ui.news.presenter.NewsActivity"></activity>
         <activity android:name=".vm.VMActivity" />
         <activity android:name=".test.TestActivity" />
         <activity android:name=".ui.login.presenter.LoginActivity" />

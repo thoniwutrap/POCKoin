@@ -3,7 +3,7 @@ package com.mobile.tr.poc.koin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mobile.tr.poc.koin.ui.github.presenter.NewsActivity
+import com.mobile.tr.poc.koin.ui.news.presenter.NewsActivity
 
 class MainActivity : AppCompatActivity() {
 

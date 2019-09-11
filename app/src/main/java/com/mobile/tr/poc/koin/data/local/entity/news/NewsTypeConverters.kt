@@ -1,9 +1,8 @@
 package com.mobile.tr.poc.koin.data.local.entity.news
 
 import androidx.room.TypeConverter
-import java.util.Collections.emptyList
 import com.google.gson.Gson
-import com.mobile.tr.poc.koin.ui.github.domain.model.ArticlesItem
+import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 
 
 class NewsTypeConverters {

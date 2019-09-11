@@ -1,7 +1,7 @@
-package com.mobile.tr.poc.koin.ui.github.datasource.network
+package com.mobile.tr.poc.koin.ui.news.datasource.network
 
 
-import com.mobile.tr.poc.koin.ui.github.domain.model.NewsResponse
+import com.mobile.tr.poc.koin.ui.news.domain.model.NewsResponse
 import io.reactivex.Observable
 
 interface NewsNetworkDataSource {

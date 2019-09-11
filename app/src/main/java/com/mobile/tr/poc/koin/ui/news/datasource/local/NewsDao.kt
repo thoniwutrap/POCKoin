@@ -1,11 +1,11 @@
-package com.mobile.tr.poc.koin.ui.github.datasource.local
+package com.mobile.tr.poc.koin.ui.news.datasource.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.mobile.tr.poc.koin.data.local.entity.news.TbNews
-import com.mobile.tr.poc.koin.ui.github.domain.model.ArticlesItem
+import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 
 @Dao
 interface NewsDao {
@@ -16,5 +16,7 @@ interface NewsDao {
 	@Query("SELECT * FROM news")
 	fun getNewsDB() : MutableList<TbNews>
 
+	@Query("SELECT * FROM news WHERE uid = :uid")
+	fun getArticleFromID(uid : Long) : TbNews
 }
 

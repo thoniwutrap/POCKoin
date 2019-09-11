@@ -1,7 +1,7 @@
 package com.mobile.tr.poc.koin.data.local.entity.news
 
 import androidx.room.*
-import com.mobile.tr.poc.koin.ui.github.domain.model.ArticlesItem
+import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 
 @Entity(tableName = "news")
 class TbNews {
@@ -14,7 +14,7 @@ class TbNews {
     var totalResults: Int? = null
 
     @TypeConverters(NewsTypeConverters::class)
-    var articles: List<ArticlesItem?> = listOf()
+    var articles: MutableList<ArticlesItem> = mutableListOf()
 
     @ColumnInfo(name ="status")
     var status: String? = null
