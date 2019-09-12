@@ -7,11 +7,13 @@ interface NewsContract {
 
     interface View : NewsContract{
         fun onNewsSuccess()
+        fun onOfflineMode()
     }
 
 
     interface Presenter : LifecycleObserver {
         fun getGithub()
+        fun getNewsOffline()
         fun getNews()
     }
 }

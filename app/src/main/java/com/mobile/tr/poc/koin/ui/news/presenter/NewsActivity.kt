@@ -24,38 +24,34 @@ class NewsActivity : BaseActivity(), NewsContract.View {
     val viewModel: NewsViewModel by viewModel()
     private val presenter: NewsContract.Presenter by inject { parametersOf(this, viewModel) }
     var binding : ActivityGithubBinding? = null
-    var adapter : NewsAdapter? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView<ActivityGithubBinding>(this, R.layout.activity_github)
             .apply {
                 newsViewModel = viewModel
                 lifecycleOwner = this@NewsActivity
             }
-        setupView()
+        subscribeViewModel()
         showLoading().let {
             presenter.getGithub()
         }
     }
 
-    fun setupView(){
-        subscribeViewModel()
-        rvNews?.initVertical()
-        adapter = NewsAdapter()
-        rvNews?.adapter = adapter
-    }
 
-    fun subscribeViewModel(){
+    private fun subscribeViewModel(){
         viewModel.mutablePostList.observe(this, Observer<MutableList<ArticlesItem>> {
-            adapter?.updateNews(it)
+            viewModel.adapter?.updateNews(it)
         })
     }
 
     override fun onNewsSuccess() {
         hideLoading()
+    }
+
+    override fun onOfflineMode() {
+        hideLoading()
+        presenter.getNewsOffline()
     }
 
     fun getUser(view: View) {

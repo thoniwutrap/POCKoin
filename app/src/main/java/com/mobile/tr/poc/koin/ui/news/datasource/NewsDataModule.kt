@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val newsDataModule = module {
 
-    factory<NewsLocalDataSource> { NewsLocalRepository(get()) }
+    factory<NewsLocalDataSource> { NewsLocalRepository(get(),get()) }
     factory<NewsNetworkDataSource> { NewsNetworkRepository(get()) }
 }
 

@@ -12,19 +12,11 @@ import retrofit2.Response
 
 class NewsViewModel : ViewModel() {
 
-    private val _selectedID = MutableLiveData<Int>()
-    private val author = MutableLiveData<String>()
-    val selectedID: LiveData<Int> = _selectedID
-    var dataList: MutableList<ArticlesItem> = mutableListOf()
+
     var mutablePostList = MutableLiveData<MutableList<ArticlesItem>>()
+    var adapter : NewsAdapter? = null
 
     init {
-        _selectedID.value = 1
-        author.value = "sss"
+        adapter = NewsAdapter()
     }
-
-    fun toggle(optionID: Int) {
-        _selectedID.value = optionID
-    }
-
 }

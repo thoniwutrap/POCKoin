@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.mobile.tr.poc.koin.data.local.AppDatabase
 import com.mobile.tr.poc.koin.data.local.query.UserDao
+import com.mobile.tr.poc.koin.ui.news.datasource.local.ImageNewsDao
 import com.mobile.tr.poc.koin.ui.news.datasource.local.NewsDao
 import org.koin.dsl.module
 
@@ -15,6 +16,7 @@ val localModule = module {
     single{ provideAppDatabase(get()) }
     single { provideUserDao(get())}
     single { provideGithubUser(get()) }
+    single { provideImageNewsDao(get()) }
 
 }
 
@@ -28,3 +30,4 @@ fun provideAppDatabase(application: Application): AppDatabase =
 
 fun provideUserDao(db: AppDatabase): UserDao = db.userDao()
 fun provideGithubUser(db: AppDatabase) : NewsDao = db.githubUser()
+fun provideImageNewsDao(db: AppDatabase) : ImageNewsDao = db.imageNewsDao()

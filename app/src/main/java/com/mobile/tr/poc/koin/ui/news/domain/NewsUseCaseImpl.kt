@@ -1,5 +1,6 @@
 package com.mobile.tr.poc.koin.ui.news.domain
 
+import com.mobile.tr.poc.koin.data.local.entity.news.TbImageNews
 import com.mobile.tr.poc.koin.data.local.entity.news.TbNews
 import com.mobile.tr.poc.koin.ui.news.datasource.local.NewsLocalDataSource
 import com.mobile.tr.poc.koin.ui.news.datasource.network.NewsNetworkDataSource
@@ -10,6 +11,7 @@ import io.reactivex.Observable
 class NewsUseCaseImpl(private val remoteSource: NewsNetworkDataSource,
                       private val localSource : NewsLocalDataSource
 ) : NewsUseCase {
+
 
     override fun getArticle(userId: Long): TbNews {
         return localSource.getArticleDB(userId)
@@ -26,6 +28,10 @@ class NewsUseCaseImpl(private val remoteSource: NewsNetworkDataSource,
 
     override fun getNewsDB(): MutableList<TbNews> {
         return localSource.getNewsDB()
+    }
+
+    override fun saveImgNews(imgNews: TbImageNews): Long {
+        return localSource.saveImageNewsDB(imgNews)
     }
 
 }
