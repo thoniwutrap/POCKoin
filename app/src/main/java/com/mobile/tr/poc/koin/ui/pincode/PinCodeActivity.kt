@@ -33,7 +33,6 @@ class PinCodeActivity : BaseActivity() {
         openSoftKeyboard(this, edtPinCode)
 
         viewModel.pincode.observe(this, Observer { pin ->
-            Toast.makeText(this, "$pin length=${pin.length}", Toast.LENGTH_SHORT).show()
             pin.length.let { length ->
                 if (length != 0) {
                     viewModel.pincodeInstance.forEachIndexed { index, element ->

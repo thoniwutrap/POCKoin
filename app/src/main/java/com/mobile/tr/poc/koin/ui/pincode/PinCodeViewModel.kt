@@ -1,11 +1,14 @@
 package com.mobile.tr.poc.koin.ui.pincode
 
+import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PinCodeViewModel : ViewModel() {
 
     var pincodeInstance : MutableList<PinCodeModel> = mutableListOf()
+
+    var pinColor : Int = Color.BLUE
 
     var pincode = MutableLiveData<String>()
     var picCodeList = MutableLiveData<MutableList<PinCodeModel>>()

@@ -17,12 +17,15 @@
 
 
         <ImageView
-                android:padding="12dp"
+                android:layout_margin="15dp"
+                app:bgColor="@{viewmodel.enable ? @color/orange : @color/white}"
+                app:stokeColor="@{viewmodel.enable ? @color/orange : @color/orange}"
+                android:id="@+id/imgPin"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@{viewmodel.enable ? @drawable/pin_circle_active : @drawable/pin_circle}"
+                android:background="@drawable/pin_circle"
                 />
 
 
