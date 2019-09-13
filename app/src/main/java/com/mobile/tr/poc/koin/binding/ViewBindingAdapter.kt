@@ -22,4 +22,13 @@ object ViewBindingAdapter {
         recyclerView.adapter = adapter
     }
 
+    @JvmStatic
+    @BindingAdapter("app:setAdapterHorizontal")
+    fun bindRecyclerViewAdapterHorizontal(recyclerView: RecyclerView, adapter: RecyclerView.Adapter<*>) {
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context,LinearLayoutManager.HORIZONTAL ,false)
+        recyclerView.itemAnimator?.changeDuration = 0
+        recyclerView.adapter = adapter
+    }
+
 }
