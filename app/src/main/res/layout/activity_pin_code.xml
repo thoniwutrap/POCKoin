@@ -7,14 +7,14 @@
 
         <variable
                 name="pincodeViewModel"
-                type="com.mobile.tr.poc.koin.ui.pincode.PinCodeViewModel" />
+                type="com.mobile.tr.poc.koin.ui.pincode.presenter.PinCodeViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.pincode.PinCodeActivity">
+            tools:context=".ui.pincode.presenter.PinCodeActivity">
 
 
         <androidx.recyclerview.widget.RecyclerView

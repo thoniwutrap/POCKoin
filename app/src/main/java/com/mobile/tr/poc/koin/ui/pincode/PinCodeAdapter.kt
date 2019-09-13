@@ -1,6 +1,5 @@
 package com.mobile.tr.poc.koin.ui.pincode
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +8,6 @@ import com.mobile.tr.poc.koin.databinding.PincodeListItemBinding
 class PinCodeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var pinCodeList : MutableList<PinCodeModel> = mutableListOf()
-
 
     fun updatePinCode(pinCodeListUpdate: MutableList<PinCodeModel>) {
         pinCodeList = pinCodeListUpdate
@@ -33,10 +31,10 @@ class PinCodeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         (holder as RecyclerHolderCatIcon).bind(appInfo)
     }
 
-    inner class RecyclerHolderCatIcon(private var newsBinding: PincodeListItemBinding) : RecyclerView.ViewHolder(newsBinding.root) {
+    inner class RecyclerHolderCatIcon(private var pinBinding: PincodeListItemBinding) : RecyclerView.ViewHolder(pinBinding.root) {
 
         fun bind(appInfo: PinCodeModel) {
-            newsBinding.viewmodel  = appInfo
+            pinBinding.viewmodel  = appInfo
         }
     }
 }

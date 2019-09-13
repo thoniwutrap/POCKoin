@@ -5,7 +5,6 @@ import com.mobile.tr.poc.koin.ui.news.domain.NewsUseCaseImpl
 import com.mobile.tr.poc.koin.ui.news.presenter.NewsContract
 import com.mobile.tr.poc.koin.ui.news.presenter.NewsPresenter
 import com.mobile.tr.poc.koin.ui.news.presenter.NewsViewModel
-import com.mobile.tr.poc.koin.ui.pincode.PinCodeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

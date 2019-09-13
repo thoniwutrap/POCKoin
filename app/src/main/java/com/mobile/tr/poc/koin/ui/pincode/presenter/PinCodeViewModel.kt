@@ -1,20 +1,20 @@
-package com.mobile.tr.poc.koin.ui.pincode
+package com.mobile.tr.poc.koin.ui.pincode.presenter
 
-import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mobile.tr.poc.koin.ui.pincode.PinCodeAdapter
+import com.mobile.tr.poc.koin.ui.pincode.PinCodeModel
+import com.mobile.tr.poc.koin.utils.SingleLiveEvent
+
 
 class PinCodeViewModel : ViewModel() {
 
     var pincodeInstance : MutableList<PinCodeModel> = mutableListOf()
-
-    var pinColor : Int = Color.BLUE
-
-    var pincode = MutableLiveData<String>()
-    var picCodeList = MutableLiveData<MutableList<PinCodeModel>>()
+    var pincode = SingleLiveEvent<String>()
+    var picCodeList = SingleLiveEvent<MutableList<PinCodeModel>>()
 
     var adapter : PinCodeAdapter? = null
-    var maxPin : Int = 6
+    var maxPin : Int = 8
 
     init {
         adapter = PinCodeAdapter().apply {

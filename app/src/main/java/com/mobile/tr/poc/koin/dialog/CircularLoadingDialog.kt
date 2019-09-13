@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.mobile.tr.poc.koin.R
 
 class CircularLoadingDialog : DialogFragment() {
@@ -19,7 +20,6 @@ class CircularLoadingDialog : DialogFragment() {
             return dialog
         }
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.dialog_circular_loading, container, true)

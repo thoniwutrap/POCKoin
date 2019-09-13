@@ -12,7 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.pincode.PinCodeActivity"></activity>
+        <activity android:name=".ui.pincode.presenter.PinCodeActivity"></activity>
         <activity android:name=".ui.news.presenter.NewsActivity" />
         <activity android:name=".vm.VMActivity" />
         <activity android:name=".test.TestActivity" />

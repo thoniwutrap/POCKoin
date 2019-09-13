@@ -46,16 +46,12 @@ object ViewBindingAdapter {
     fun backgroundDrawableChange(view: ImageView, bgColor : Int, stokeColor : Int){
         view.background.apply {
             when (this) {
-                is ShapeDrawable -> {
-                    this.paint.color = bgColor
-                }
+                is ShapeDrawable -> this.paint.color = bgColor
                 is GradientDrawable -> {
                     this.setColor(bgColor)
-                    this.setStroke(1,stokeColor)
+                    this.setStroke(2,stokeColor)
                 }
-                is ColorDrawable -> {
-                    this.color =bgColor
-                }
+                is ColorDrawable -> this.color =bgColor
             }
         }
 
