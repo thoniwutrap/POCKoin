@@ -45,6 +45,7 @@ class PinCodeActivity : BaseActivity() {
                 } else {
                     viewModel.pincodeInstance[0].isEnable = false
                 }
+            }.also {
                 viewModel.picCodeList.postValue(viewModel.pincodeInstance)
             }
         })
