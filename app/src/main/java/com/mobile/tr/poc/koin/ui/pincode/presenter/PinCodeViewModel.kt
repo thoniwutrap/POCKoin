@@ -14,7 +14,7 @@ class PinCodeViewModel : ViewModel() {
     var picCodeList = SingleLiveEvent<MutableList<PinCodeModel>>()
 
     var adapter : PinCodeAdapter? = null
-    var maxPin : Int = 8
+    var maxPin : Int = 4
 
     init {
         adapter = PinCodeAdapter().apply {

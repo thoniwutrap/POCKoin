@@ -39,13 +39,14 @@ class PinCodeActivity : BaseActivity(),PinCodeContract.View {
             presenter.keyPinCode()
         })
 
-        viewModel.picCodeList.observe(this, Observer<MutableList<PinCodeModel>> {
+        viewModel.picCodeList.observe(this, Observer{
             viewModel.adapter?.updatePinCode(it)
         })
     }
 
     override fun onKeySuccess(pinCode: String) {
         showLoading()
+        //Call API ?????
         toast(pinCode)
     }
 }

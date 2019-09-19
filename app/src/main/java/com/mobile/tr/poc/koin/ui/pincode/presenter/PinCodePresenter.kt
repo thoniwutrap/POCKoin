@@ -8,7 +8,6 @@ class PinCodePresenter constructor(
 ) : PinCodeContract.Presenter{
 
     override fun keyPinCode() {
-        Log.e("d","xcxc")
         viewModel.pincode.value.toString().length.let { length ->
             if (length != 0) {
                 viewModel.pincodeInstance.forEachIndexed { index, element ->

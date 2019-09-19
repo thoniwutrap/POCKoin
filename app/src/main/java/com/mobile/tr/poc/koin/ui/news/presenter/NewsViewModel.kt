@@ -10,13 +10,33 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewsViewModel : ViewModel() {
+class NewsViewModel() : ViewModel() {
 
 
     var mutablePostList = MutableLiveData<MutableList<ArticlesItem>>()
-    var adapter : NewsAdapter? = null
+    var newsSelected = MutableLiveData<ArticlesItem>()
+    var newsPositionSelected = MutableLiveData<Int>()
+    var adapter: NewsAdapter? = null
+
 
     init {
-        adapter = NewsAdapter()
+        adapter = NewsAdapter(this)
     }
+
+    fun getNews(position: Int): ArticlesItem {
+        return mutablePostList.value!![position]
+    }
+
+
+    fun onItemClick(position: Int) {
+        val news = getNews(position)
+        newsPositionSelected.value = position
+        newsSelected.value = news
+    }
+
+    fun getSelected(): MutableLiveData<ArticlesItem> {
+        return newsSelected
+    }
+
+
 }

@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val newsModule = module {
 
-    viewModel { NewsViewModel() }
+    single  { NewsViewModel() }
 
     factory  <NewsContract.Presenter> { (view: NewsContract.View,viewModel : NewsViewModel) -> NewsPresenter(view, get(),viewModel,get())}
 

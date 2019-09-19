@@ -32,7 +32,6 @@ class ExampleUnitTest {
         assertTrue(file.exists())
     }
 
-
     @Test
     fun checkName() {
         assertEquals("Mountain View",entry?.city?.name)

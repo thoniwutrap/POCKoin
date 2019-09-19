@@ -18,8 +18,8 @@
 
         <ImageView
                 android:layout_margin="15dp"
-                app:bgColor="@{viewmodel.enable ? @color/orange : @color/white}"
-                app:stokeColor="@{viewmodel.enable ? @color/orange : @color/orange}"
+                app:bgColor="@{viewmodel.enable ? @color/colorAccent : @color/white}"
+                app:stokeColor="@{viewmodel.enable ? @color/colorAccent : @color/colorAccent}"
                 android:id="@+id/imgPin"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

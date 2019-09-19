@@ -9,9 +9,11 @@ import androidx.lifecycle.Observer
 import com.mobile.tr.poc.koin.R
 import com.mobile.tr.poc.koin.databinding.ActivityGithubBinding
 import com.mobile.tr.poc.koin.extension.initVertical
+import com.mobile.tr.poc.koin.extension.launchActivity
 import com.mobile.tr.poc.koin.ui.base.BaseActivity
 import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 import com.mobile.tr.poc.koin.ui.news.domain.model.NewsResponse
+import com.mobile.tr.poc.koin.ui.newsdetails.presenter.NewsDetailActivity
 import kotlinx.android.synthetic.main.activity_github.*
 import kotlinx.android.synthetic.main.activity_github.view.*
 import org.koin.android.ext.android.inject
@@ -23,15 +25,16 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     val viewModel: NewsViewModel by viewModel()
     private val presenter: NewsContract.Presenter by inject { parametersOf(this, viewModel) }
-    var binding : ActivityGithubBinding? = null
+    var binding: ActivityGithubBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityGithubBinding>(this, R.layout.activity_github)
-            .apply {
-                newsViewModel = viewModel
-                lifecycleOwner = this@NewsActivity
-            }
+        binding =
+            DataBindingUtil.setContentView<ActivityGithubBinding>(this, R.layout.activity_github)
+                .apply {
+                    newsViewModel = viewModel
+                    lifecycleOwner = this@NewsActivity
+                }
         subscribeViewModel()
         showLoading().let {
             presenter.getGithub()
@@ -39,9 +42,15 @@ class NewsActivity : BaseActivity(), NewsContract.View {
     }
 
 
-    private fun subscribeViewModel(){
+    private fun subscribeViewModel() {
         viewModel.mutablePostList.observe(this, Observer<MutableList<ArticlesItem>> {
             viewModel.adapter?.updateNews(it)
+        })
+
+        viewModel.getSelected().observe(this, Observer<ArticlesItem> {
+            launchActivity<NewsDetailActivity>{
+                putExtra("position",viewModel.newsPositionSelected.value)
+            }
         })
     }
 

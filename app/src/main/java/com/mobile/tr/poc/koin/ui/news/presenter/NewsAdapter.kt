@@ -8,7 +8,7 @@ import com.mobile.tr.poc.koin.databinding.NewsListItemBinding
 import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 import java.util.ArrayList
 
-class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class NewsAdapter(var viewModel: NewsViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var mNewsList : MutableList<ArticlesItem> = mutableListOf()
 
@@ -22,7 +22,7 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val applicationBinding = NewsListItemBinding.inflate(layoutInflater, parent, false)
-        return RecyclerHolderCatIcon(applicationBinding)
+        return RecyclerHolderNews(applicationBinding)
     }
 
     override fun getItemCount(): Int  {
@@ -32,14 +32,15 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val appInfo = mNewsList[position]
-        (holder as RecyclerHolderCatIcon).bind(appInfo)
+        (holder as RecyclerHolderNews).bind(viewModel,position)
     }
 
-    inner class RecyclerHolderCatIcon(private var newsBinding: NewsListItemBinding) : RecyclerView.ViewHolder(newsBinding.root) {
+    inner class RecyclerHolderNews(private var newsBinding: NewsListItemBinding) : RecyclerView.ViewHolder(newsBinding.root) {
 
-        fun bind(appInfo: ArticlesItem) {
+        fun bind(appInfo: NewsViewModel,position: Int) {
             newsBinding.newsViewModel  = appInfo
+            newsBinding.position = position
+            newsBinding.executePendingBindings()
         }
     }
 
