@@ -17,6 +17,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.mobile.tr.poc.koin.R
 import java.lang.Math.abs
 import java.math.RoundingMode
@@ -53,6 +54,20 @@ class NewsDetailActivity : AppCompatActivity() {
             val rounded = alpha.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
             Log.e("alpha",rounded.toFloat().toString())
             viewTop.alpha = rounded.toFloat()
+            imgFrameBack.alpha = 1-rounded.toFloat()
+
+//            if(rounded <= 0.5){
+//                btnBack.setColorFilter(ContextCompat.getColor(this, R.color.white),PorterDuff.Mode.MULTIPLY);
+//            }else{
+//                btnBack.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent),PorterDuff.Mode.MULTIPLY);
+//            }
+
+            if(rounded.toFloat() > 0.4){
+                btnBack.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent));
+            }else{
+                btnBack.setColorFilter(ContextCompat.getColor(this, R.color.white));
+            }
+
         })
     }
 }
