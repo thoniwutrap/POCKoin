@@ -12,7 +12,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.newsdetails.presenter.NewsDetailActivity"></activity>
+        <activity android:name=".ui.newsdetails.presenter.NewsDetailActivity"
+                android:theme="@style/AppTheme.NoActionBar"
+                ></activity>
         <activity android:name=".ui.pincode.presenter.PinCodeActivity" />
         <activity android:name=".ui.news.presenter.NewsActivity" />
         <activity android:name=".vm.VMActivity" />

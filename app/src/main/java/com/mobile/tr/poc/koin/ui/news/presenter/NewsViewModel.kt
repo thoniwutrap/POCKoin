@@ -12,12 +12,10 @@ import retrofit2.Response
 
 class NewsViewModel() : ViewModel() {
 
-
     var mutablePostList = MutableLiveData<MutableList<ArticlesItem>>()
     var newsSelected = MutableLiveData<ArticlesItem>()
     var newsPositionSelected = MutableLiveData<Int>()
     var adapter: NewsAdapter? = null
-
 
     init {
         adapter = NewsAdapter(this)
