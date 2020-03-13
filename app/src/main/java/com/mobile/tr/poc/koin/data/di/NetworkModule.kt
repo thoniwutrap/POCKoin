@@ -5,6 +5,7 @@ import com.mobile.tr.poc.koin.ui.login.datasource.network.LoginAPI
 import com.mobile.tr.poc.koin.network.HeaderInterceptor
 import com.mobile.tr.poc.koin.test.PostApi
 import com.mobile.tr.poc.koin.ui.news.datasource.network.NewsAPI
+import com.mobile.tr.poc.koin.ui.paging.network.APIService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -21,6 +22,7 @@ val networkModule = module{
     single { provideRetrofit<LoginAPI>(get(),"https://api.github.com/")}
     single { provideRetrofit<PostApi>(get(),"https://api.github.com/")}
     single { provideRetrofit<NewsAPI>(get(),NEWS_URL)}
+    single { provideRetrofit<APIService>(get(),NEWS_URL)}
 }
 
 

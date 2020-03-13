@@ -23,6 +23,7 @@ class VMActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vm_activity)
         viewModel = ViewModelProviders.of(this).get(VmViewModel::class.java)
+
         if(savedInstanceState == null) {
             val host = NavHostFragment.create(R.navigation.vmnavigation)
             supportFragmentManager

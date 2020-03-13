@@ -5,6 +5,8 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.mobile.tr.poc.koin.ui.news.domain.model.ArticlesItem
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +18,9 @@ class NewsViewModel() : ViewModel() {
     var newsSelected = MutableLiveData<ArticlesItem>()
     var newsPositionSelected = MutableLiveData<Int>()
     var adapter: NewsAdapter? = null
+
+    private val pageSize = 10
+
 
     init {
         adapter = NewsAdapter(this)
